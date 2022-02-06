@@ -21,13 +21,17 @@ function buildMainCharacter(nameInput, ageInput, pronounsInput) {
 // }
 
 
-function saveReview(reviewInput, reviews) {
-  for (var i = 0; i < reviews.length + 1; i++) {
-    if (reviewInput !== reviews[i]) {
-      reviews.push(reviewInput);
-      return reviews;
+function saveReview(reviewInput, reviewList) {
+  //this function needs to take in 2 parameters a string and an array
+  //the array they are invoking is the reviews array that they declare in the test
+  //
+  for (var i = 0; i < reviewList.length + 1; i++) {
+    if (reviewInput !== reviewList[i]) {
+      reviewList.push(reviewInput);
+      console.log(reviewList)
+      return reviewList;
     } else {
-      return 
+      return
     }
   }
 }

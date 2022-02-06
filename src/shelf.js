@@ -1,32 +1,32 @@
-function shelfBook(book, sciFiShelf) {
-  if (sciFiShelf.length < 3) {
-    sciFiShelf.unshift(book);
+function shelfBook(book, shelf) {
+  if (shelf.length < 3) {
+    shelf.unshift(book);
     //console.log(book);
-    return sciFiShelf;
+    return shelf;
   } else {
-    return sciFiShelf;
+    return shelf;
   }
 }
 
-function unshelfBook(book, sciFiShelf) {
-  for (var i = 0; i < sciFiShelf.length; i++) {
-    if (book === sciFiShelf[i].title) {
-      sciFiShelf.splice(i, 1);
+function unshelfBook(book, shelf) {
+  for (var i = 0; i < shelf.length; i++) {
+    if (book === shelf[i].title) {
+      shelf.splice(i, 1);
       // return sciFiShelf;
     }
   }
 }
 
-function listTitles(fantasyShelf) {
+function listTitles(shelf) {
    //for (var i = 0; i < fantasyShelf.length - 1; i++) {
    //console.log(fantasyShelf[i].title);
-      var bookList = `${fantasyShelf[0].title}, ${fantasyShelf[1].title}, ${fantasyShelf[2].title}`;
+      var bookList = `${shelf[0].title}, ${shelf[1].title}, ${shelf[2].title}`;
       return bookList;
 }
 
-function searchShelf(sciFiShelf, bookTitle) {
-  for (var i = 0; i < sciFiShelf.length; i++) {
-    if (sciFiShelf[i].title === bookTitle) {
+function searchShelf(shelf, bookTitle) {
+  for (var i = 0; i < shelf.length; i++) {
+    if (shelf[i].title === bookTitle) {
       return true;
     }
   }
