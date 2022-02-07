@@ -1,67 +1,24 @@
-// function shelfBook(book, shelf) {
-//   if (shelf.length < 3) {
-//     shelf.unshift(book);
-//     //console.log(book);
-//     return shelf;
-//   } else {
-//     return shelf;
-//   }
-// }
-//
-// function unshelfBook(book, shelf) {
-//   for (var i = 0; i < shelf.length; i++) {
-//     if (book === shelf[i].title) {
-//       shelf.splice(i, 1);
-//       // return sciFiShelf;
-//     }
-//   }
-// }
-//
-// function listTitles(shelf) {
-//    //for (var i = 0; i < fantasyShelf.length - 1; i++) {
-//    //console.log(fantasyShelf[i].title);
-//       var bookList = `${shelf[0].title}, ${shelf[1].title}, ${shelf[2].title}`;
-//       return bookList;
-// }
-//
-// function searchShelf(shelf, bookTitle) {
-//   for (var i = 0; i < shelf.length; i++) {
-//     if (shelf[i].title === bookTitle) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-//
-
-
-
-
-
-
-
-
-
-
 
 function createLibrary(libraryName) {
+//input: a single parameter (a string libraryName)
+//function purpose: to create an object with multiple properties from a string libraryName input
+//output: the library object with multiple properties
   var library =
-    {
-      name : libraryName,
-      shelves : {
-       fantasy : [],
-       fiction : [],
-       nonFiction : [],
-     }
-   }
-//
+  {
+    name : libraryName,
+    shelves : {
+      fantasy : [],
+      fiction : [],
+      nonFiction : [],
+    }
+  }
   return library;
 }
 
 function addBook(publicLibrary, book) {
-   // input to addBook: 2 parameters.
-   // denverLibrary - createLibrary Function - to object libraryDetails
-  //console.log(publicLibrary.shelves)
+   // input: 2 parameters (an object publicLibrary, and an object book)
+   //function purpose: to add the object book to the object publicLibrary -> that has a property shelves -> that has an object with 3 properties that are each empty arrays (fantasy, fiction, nonFiction)
+  // output: adding an object book to the object publicLibrary -> shelves based on genre
    if (book.genre === "fantasy"){
      publicLibrary.shelves.fantasy.push(book);
    } else if (book.genre === "nonFiction"){
@@ -72,9 +29,15 @@ function addBook(publicLibrary, book) {
 }
 
 function checkoutBook (publicLibrary, bookName, genre) {
+//input: 3 parameters(an object publicLibrary, a string bookName, and a string genre)
+//function purpose: to check if the object publicLibrary has books on its shelves based on genre and to allow a patron to check it out. If the bookName and genre you are looking exists in the publicLibrary object, you will remove it from the shelf and return a string message. If the bookName and genre you are looking for doesnt exist at the publicLibrary object it will return a string message.
+//output: a string message that says whether you check out the book or that the library doesnt have it.
+
+//!!NOT SURE WHY THE .LENGTH OF MY FOR LOOP HAS TO BE - 1 IN THIS SITUATION????????
 
   if (genre === "fantasy" && publicLibrary.shelves.fantasy.length !== 0) {
     for (var i = 0; i < publicLibrary.shelves.fantasy.length - 1; i++); {
+      console.log(publicLibrary.shelves.fantasy[i]);
       if (publicLibrary.shelves.fantasy[i].title === bookName) {
           publicLibrary.shelves.fantasy.splice(0);
           return `You have now checked out ${bookName} from the ${publicLibrary.name}`;
@@ -90,7 +53,7 @@ function checkoutBook (publicLibrary, bookName, genre) {
           return `You have now checked out ${bookName} from the ${publicLibrary.name}`;
         } else {
           return `Sorry, there are currently no copies of ${bookName} available at the ${publicLibrary.name}`;
-        }
+          }
       }
 
   } else if (genre === "nonFiction" && publicLibrary.shelves.nonFiction.length !== 0) {
@@ -100,19 +63,12 @@ function checkoutBook (publicLibrary, bookName, genre) {
           return `You have now checked out ${bookName} from the ${publicLibrary.name}`;
         } else {
           return `Sorry, there are currently no copies of ${bookName} available at the ${publicLibrary.name}`
-        }
+          }
       }
     } else {
       return `Sorry, there are currently no copies of ${bookName} available at the ${publicLibrary.name}`
     }
 }
-
-
-
-
-
-
-
 
 
 module.exports = {
